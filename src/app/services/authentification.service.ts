@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -51,7 +51,7 @@ export class AuthentificationService {
 
   }
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token')
   }
 
