@@ -1,0 +1,153 @@
+// ion-content{
+// --background: linear-gradient(to bottom, #218c751e, #218c751a ), url("../../../../assets/images/cassures.jpg")0 0/100% 100% no-repeat center center / cover;
+// }
+
+
+// .btn{
+//   padding-top: 50%;
+// }
+ion-content.background {
+  --background: #218c74;
+  // --background:linear-gradient(to bottom, #218c751e, #218c751a ),url("../../../../assets/images/cassures.jpg")  no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.content {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: black;
+  width: 100%;
+  // transform: translate(-50% -50%);
+  height: 75vh;
+  position: absolute;
+  bottom: 0;
+  // background: rgba(255, 255, 255, 0.678);
+  background: rgba(255, 255, 255, 1);
+  // margin: 20vh auto;
+  // position: fixed;
+  // margin-top: 310px;
+  // margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.contenu-all {
+  width: 90%;
+  margin: auto;
+}
+
+.text-align-center {
+  text-align: center;
+
+  h1 {
+    margin-top: 35px;
+    letter-spacing: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 35px !important;
+    // font-size: 1em;
+    // margin-top: 50px;
+  }
+
+  p {
+    margin-top: -5px;
+    font-size: 15px;
+  }
+
+  .arrow-down {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+.button-action {
+  // margin-left: 5px;
+  margin-bottom: 25px;
+}
+
+.signin-text {
+  // background: rgba(26, 78, 73, 0.829);
+  color: black;
+  border-bottom: 3px solid rgba(26, 78, 73, 0.829);
+  padding-bottom: 5px;
+  // border-radius: 6px;
+  font-size: medium;
+  text-transform: none;
+}
+
+.signup-text {
+  // background: #888f8d;
+  padding: 5px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.39);
+  text-transform: none;
+  // font-size: x-small;
+  // color: #a8a8a8;
+  // text-align: center;
+  // text-transform: none;
+}
+
+ion-input {
+  --background: #ddd9d9;
+  // border-bottom: 2px solid #b8b1b1;
+  border-radius: 6px;
+}
+
+.items {
+  background-color: #ededed !important;
+  --padding-top: 1px !important;
+  --padding-bottom: 1px !important;
+  --color: black;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.actionbutton {
+  background: #218c74;
+  color: white;
+  border-radius: 5px;
+  // margin-left: 15px;
+  // margin-right: 13px;
+  font-size: large;
+}
+
+
+#forgotpassword {
+  font-size: 14px;
+  color: #3b5998;
+  text-align: end;
+  cursor: pointer;
+}
+
+
+.line {
+  border-bottom: 1px solid grey;
+  margin-bottom: 16px;
+}
+
+
+.fbbutton {
+  background-color: #1655dd;
+  border-radius: 6px;
+  color: cornsilk;
+  margin-bottom: 12px;
+  text-transform: none;
+}
+
+.googlebutton {
+  background-color: #ce2717;
+  border-radius: 6px;
+  color: cornsilk;
+  margin-bottom: 40px;
+  text-transform: none;
+}

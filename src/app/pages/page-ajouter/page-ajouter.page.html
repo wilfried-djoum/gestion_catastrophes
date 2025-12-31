@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajouts Récents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list style="background: none;">
+    <ion-card *ngFor="let catastrophe of this.posts | async " style="--background: #ffffffba;"
+      (click)="openDetailModal(catastrophe)">
+      <!-- <div class="message" *ngIf="catastrophe.username != this.payloadParse">
+        <div class="container" style="text-align: center;">
+          <ion-icon name="sad" color="primary" style="font-size: 70px;"></ion-icon>&nbsp;
+          <h3>Vous n'avez rien signalé !</h3>
+        </div>
+      </div> -->
+      <ion-card-content *ngIf="catastrophe.username == this.payloadParse">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="3">
+              <ion-thumbnail>
+                <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" />
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col size="9">
+              <ion-card-title style="font-weight: bold; color:black;">{{catastrophe.nomCatastrophe}}</ion-card-title>
+              <ion-card-subtitle>{{catastrophe.ville}}</ion-card-subtitle>
+              <h6>{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm a'}}</h6>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

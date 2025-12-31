@@ -1,0 +1,81 @@
+<ion-content class="background">
+  <ion-text class="text-align-center">
+    <h1 style="color: white !important;">Bienvenue !</h1>
+    <p style="color: white !important;"> Enregistrez vous ! <br>
+      <ion-icon style="color: white !important;" class="arrow-down" name="arrow-down"></ion-icon>
+    </p>
+  </ion-text>
+
+
+  <div class="content">
+    <div class="contenu-all">
+      <div class="button-action">
+        <ion-button fill="clear" size="small" color="dark" routerLink="/login" routerDirection="root">
+          <b>
+            <p class="signin-text">Connexion</p>
+          </b>
+        </ion-button>
+        <ion-button fill="clear" size="small" color="dark">
+          <b>
+            <p class="signup-text">Inscription</p>
+          </b>
+        </ion-button>
+      </div>
+
+      <form action="" method="post" class="ion-padding" #registerForm="ngForm" (ngSubmit)="register()">
+        <ion-input placeholder="Nom utilisateur" type="text" #nom="ngModel" [(ngModel)]="user.username" name="username"  class="form-control"
+          style="padding-left: 10px !important;" required nom>
+          <ion-icon name="document" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input><br>
+        <!-- <ion-input placeholder="Nom" type="text" name="nom" #nom="ngModel" [(ngModel)]="connect.nom"
+          style="padding-left: 10px !important;" required nom>
+          <ion-icon name="document" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input><br>
+        <ion-input placeholder="Prenom" type="text" name="prenom" #prenom="ngModel" [(ngModel)]="connect.prenom"
+          style="padding-left: 10px !important;" required prenom>
+          <ion-icon name="document" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input><br> -->
+        <ion-input placeholder="Adresse Mail" type="email" #email="ngModel" class="form-control" [(ngModel)]="user.email" name="email"
+          style="padding-left: 10px !important;" required email>
+          <ion-icon name="mail" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input>
+        <!-- <div *ngIf="email.invalid && email.touched">
+          <ion-text color="danger text-center">
+            <p style="font-size: small; text-align:center;">Entrez une bonne adresse!</p>
+          </ion-text>
+        </div> -->
+        <br>
+
+        <ion-input [type]="type ? 'password' : 'text'" placeholder="Mot de passe" type="password"
+          style="padding-left: 10px !important;" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel"
+          required password>
+          <ion-icon name="eye" (click)="changeType()" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input>
+        <!-- <div *ngIf="password.invalid && password.touched">
+          <ion-text color="danger text-center">
+            <p style="font-size: small; text-align:center;">Entrez un bon mot de passe!</p>
+          </ion-text>
+        </div> --><br>
+
+        <ion-input [type]="type ? 'password' : 'text'" placeholder="Confirmer" type="password"
+          style="padding-left: 10px !important;" class="form-control" [(ngModel)]="user.confirm_password" name="confirm_password" #password="ngModel"
+          required password>
+          <ion-icon name="eye" (click)="changeType()" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input><br>
+
+<!--
+        <ion-input type="file" placeholder="Choisissez une iage" #image="ngModel" class="form-control" [(ngModel)]="user.imageUser" name="email" style="padding-left: 10px !important;" required image>
+          <ion-icon name="image" style="margin-right:5px; font-size:medium;"></ion-icon>
+        </ion-input>
+        <br> -->
+
+
+        <div class="btn">
+          <ion-button  type="submit" class="actionbutton" expand="full" fill="clear"
+             style="text-transform: none; font-weight: bold;">Inscription</ion-button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</ion-content>

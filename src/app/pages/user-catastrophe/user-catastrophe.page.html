@@ -1,0 +1,254 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="img">
+      <div class="top">
+        <div class="back_div">
+          <!-- <ion-icon name="arrow-back-outline"></ion-icon> -->
+          <ion-buttons style="width: 90%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;">
+            <!-- <ion-back-button style="color: white !important;"></ion-back-button> -->
+            <ion-button (click)="closeModal()">
+              <ion-icon style="color: white !important;" slot="start" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="first">
+          <img
+            src="https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+            alt="">
+          <!-- <img src="../../../assets/images/willy.png" alt=""> -->
+        </div>
+        <div class="second">
+          <h6>{{catastrophe.username}}</h6>
+          <p>{{catastrophe.ville}}</p>
+          <p>3.0 <ion-icon name="star-outline"></ion-icon> (125 Revues)</p>
+        </div>
+
+        <div class="third">
+          <h6>{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm a'}}</h6>
+          <ion-button size="small" style="--background: #218c74;">
+            <font color="white">Publié</font>
+          </ion-button>
+        </div>
+      </div>
+
+      <img id="myImg" [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="upperBox ion-padding">
+    <h2>{{catastrophe.nomCatastrophe}}</h2>
+    <p>{{catastrophe.ville}}, {{catastrophe.pays.nom}}, {{catastrophe.continent.nom}}</p>
+    <span>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon> &nbsp;
+      <div class="note">(0)</div>
+    </span>
+    <div class="ship">
+      <ion-chip outline="false">
+        <ion-icon name="body"></ion-icon>
+        <ion-label>Vies Humaines</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Maisons</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="construct"></ion-icon>
+        <ion-label>Constructions</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="male"></ion-icon>
+        <ion-label>Hommes</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="female"></ion-icon>
+        <ion-label>Femmes</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="fish"></ion-icon>
+        <ion-label>Animaux</ion-label>
+      </ion-chip>
+      <ion-chip outline="false">
+        <ion-icon name="hammer"></ion-icon>
+        <ion-label>Sans abris</ion-label>
+      </ion-chip>
+    </div>
+    <div class="like-views">
+      <div class="like">
+        <ion-icon name="heart"></ion-icon> <small>(1)</small>
+      </div>
+      <div class="view">
+        <ion-icon name="eye-outline"></ion-icon><small>(20)</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Qu'est ce qui s'est passé ici ?</h3>
+    <p class="description">
+      {{catastrophe.description}}
+    </p>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Sécurité de l'endroit !</h3>
+    <ion-row>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Sécurisé</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)"> Moyen</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Risqué</p>
+      </ion-col>
+    </ion-row>
+    <ion-progress-bar color="danger" value="0.5" buffer="0.8" reserved="true"></ion-progress-bar>
+    <br>
+
+    <ion-row>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Moins</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)"> Moyen</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Peuplé</p>
+      </ion-col>
+    </ion-row>
+    <ion-progress-bar color="tertiary" value="0.8" buffer="0.9" reserved="true"></ion-progress-bar>
+    <br>
+
+    <ion-row>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Pas</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)"> Peux</p>
+      </ion-col>
+      <ion-col size="4">
+        <p style="color: rgb(100, 99, 99)">Beaucoup</p>
+      </ion-col>
+    </ion-row>
+    <ion-progress-bar color="primary" value="0.3" buffer="0.4" reserved="true"></ion-progress-bar>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Localisation !</h3>
+    <div class="maps">
+      <div id="mapId" style="width:100%; height:100%;"></div>
+      <!-- <div #map>
+        <iframe
+          src="https://www.google.com/maps?q={{ catastrophe.latitude }},{{ catastrophe.longitude }}&hl=es;z=14&output=embed"
+          style="width:100%; height:100%;"></iframe>
+      </div> -->
+    </div>
+    <ion-button expand="full" class="btn" fill="clear" shape="round">
+      <ion-icon name="locate"></ion-icon> &nbsp;
+      Prenez ma position
+    </ion-button>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Solution : </h3>
+    <div class="recent-commentaire" (click)="commentsPage()">
+      <div class="div-avatar">
+        <ion-avatar slot="start">
+          <img
+            src="https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" />
+          <!-- <img src="../../../assets/images/willy.png" /> -->
+        </ion-avatar>
+      </div>
+      <div class="div-infos" *ngFor="let item of postedMessageSeulId">
+        <h6>{{item.username}}</h6>
+        <p class="date">{{item.date | date: 'MM/dd/yyyy, h:mm a'}}</p>
+        <p class="commentraire">
+          {{item.message}}
+        </p>
+      </div>
+    </div>
+    <ion-button (click)="commentsPage()" expand="block" class="btnComment" fill="clear" shape="round">
+      <ion-icon name="send"></ion-icon> &nbsp;
+      Proposer solution
+    </ion-button>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Images associées </h3>
+    <div class="wrapper">
+      <div class="item">
+        <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="upperBox ion-padding">
+    <h3>Autres détails</h3>
+    <div class="other-infos">
+      <ion-row>
+        <ion-col size="7">
+          <p class="other-stats">
+            <ion-icon name="earth" style="    font-size: 16px;
+            color: blue;"></ion-icon> &nbsp;: <ion-text>{{catastrophe.localisation}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="alert-circle" style="font-size: 16px; color: #632d1b;"></ion-icon> &nbsp;:
+            <ion-text>{{catastrophe.causeCatastrophe}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="bookmarks" style="font-size: 16px; color: green;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.categorie.nom}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="bookmark" style="font-size: 16px; color: green;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.souscategorie.nom}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="pin" style="font-size: 16px; color: violet;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.latitude}}</ion-text>
+          </p>
+        </ion-col>
+
+        <ion-col size="5">
+          <p class="other-stats">
+            <ion-icon name="pin" style="font-size: 16px; color: violet;"></ion-icon> &nbsp;:
+            <ion-text>{{catastrophe.longitude}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="pie-chart" style="font-size: 16px; color: #8d2479;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.dimension}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="bandage" style="font-size: 16px; color: #caa30b;"></ion-icon> &nbsp;:
+            <ion-text>{{catastrophe.nombreBlesses}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="skull" style="font-size: 16px; color: red;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.nombreMort}}</ion-text>
+          </p>
+          <p class="other-stats">
+            <ion-icon name="home" style="font-size: 16px; color: #229b8d;"></ion-icon> &nbsp; :
+            <ion-text>{{catastrophe.sansAbris}}</ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+      <!-- <span>Latitude : <b>{{catastrophe.latitude}}</b></span>
+      <span>Latitude : <b>{{catastrophe.latitude}}</b></span>  -->
+    </div>
+  </div>
+
+  <ion-button class="fbbutton" expand="block" fill="clear" (click)="openEditModal()">Mise A Jour</ion-button>
+  <ion-button class="googlebutton" expand="block" fill="clear" (click)="onDeleteCatastrophe()">Supprimer</ion-button>
+</ion-content>

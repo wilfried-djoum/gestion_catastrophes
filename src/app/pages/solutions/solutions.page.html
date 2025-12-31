@@ -1,0 +1,71 @@
+<!-- <ion-header>
+  <ion-toolbar class="header">
+    <ion-title style="color: white;">solutions</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="header">
+    <h1>Solutions</h1>
+  </div>
+  <ion-grid fixed>
+    <ion-row *ngFor="let message of this.postedMessages">
+
+      <ion-col size="9" class="message other-message" *ngIf="message.username !== this.username">
+        <div class="img-nom">
+          <ion-card-subtitle style="text-align:center; text-decoration: underline;" color="dark">{{message.nomCatastrophe}}</ion-card-subtitle><br>
+          De : <b>{{message.username}}</b><br><br>
+          <div style="font-style: italic;">{{message.message}}</div>
+        </div><br>
+
+        <div class="time" text-right>
+          <!-- <br> -->
+          {{message.date | date:'MM/dd/yyyy, h:mm a'}}
+        </div>
+      </ion-col>
+
+      <ion-col offset="3" size="9" *ngIf="message.username == this.username " class="message my-message">
+        <div class="img-nom">
+          <ion-card-subtitle style="text-align:center; text-decoration: underline;" color="light">{{message.nomCatastrophe}}</ion-card-subtitle><br>
+         De : <b>{{username}}</b><br><br>
+          <div style="font-style: italic;">{{message.message}}</div>
+        </div><br>
+        <div class="time1" text-right color="light">
+          <!-- <br> -->
+          {{message.date | date:'MM/dd/yyyy, h:mm a'}}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+    <form action="" [formGroup]="form">
+      <ion-list>
+        <ion-item>
+          <ion-label >Catastrophe Choisie :</ion-label>
+          <ion-select multiple="false" value="nomCatastrophe" placeholder="Selectionnez une Catastrophe" formControlName="nomCatastrophe" >
+            <ion-select-option *ngFor="let item of posts" [value]="item.nomCatatstrophe">{{item.nomCatastrophe}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item style="display: none;">
+          <ion-label position="floating">Username</ion-label>
+          <ion-input formControlName="username" type="text" [value]="username" ></ion-input>
+        </ion-item>
+
+        <ion-row align-items-center no-padding>
+          <ion-col size="10">
+            <textarea class="message-input" formControlName="message" placeholder="Votre suggestion "></textarea>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="postSolution()" expand="block" color="primary" fill="clear" class="msg-btn"
+              [disabled]="form.invalid ">
+              <ion-icon name="send" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </form>
+</ion-footer>

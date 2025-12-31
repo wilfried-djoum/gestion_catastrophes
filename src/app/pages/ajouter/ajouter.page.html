@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title style="color: white !important">{{isEditMode ? 'Mettre à jour' : 'Enregistrer'}} la catastrophe
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="isEditMode">
+      <ion-button (click)="closeModal()" style="color: white !important">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form action="" [formGroup]="form" enctype="multipart/form-data">
+    <ion-list enctype="multipart/form-data">
+      <!-- <div class="container">
+        <img [src]="catastrophe$.imageUrl" alt="">
+      </div> -->
+      <ion-item>
+        <!-- <ion-input type="file" formControlName="imageUrl" (change)="changer($event)" > -->
+        <ion-input type="file"  (change)="changer($event)" required>
+          <!-- <ion-button (click)="selectImage()" expand="full" fill="clear" shape="round" color="dark">
+            <ion-icon name="images"></ion-icon> &nbsp; Inserer Images
+          </ion-button> -->
+        </ion-input>
+      </ion-item>
+      <ion-item style="display:none;">
+        <ion-input type="text" formControlName="imageUrl" [value]="this.image">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nom <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="text" placeholder="Nom de la Catastrophe" formControlName="nomCatastrophe">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Localisation <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="text" placeholder="Localisation" formControlName="localisation">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description </ion-label>
+        <ion-textarea type="text" placeholder="Description" formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Morts <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="number" formControlName="nombreMort"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating"> Blessés <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="number" formControlName="nombreBlesses">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label position="floating">Cause de la catastrophe <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="text" placeholder="Cause Catastrophe" formControlName="causeCatastrophe"></ion-input>
+      </ion-item>
+
+      <ion-row (onload)="getPosition();" style="display: none;">
+        <ion-col size="6">
+          <ion-item style="color: black;">
+            <ion-input type="text" name="latitude" formControlName="latitude">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item style="color: black;">
+            <ion-input type="text" name="longitude" formControlName="longitude">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label position="floating">Continent <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select value="continent" multiple="false" placeholder="Selectionner le continent"
+          formControlName="continent">
+          <ion-select-option *ngFor="let continent of this.getContinent" [value]="continent.id">{{continent.nom}}
+          </ion-select-option>
+          <!-- <ion-select-option value="amerique">Amérique</ion-select-option>
+        <ion-select-option value="asie">Asie</ion-select-option>
+        <ion-select-option value="europe">Europe</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Pays <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select value="pays" multiple="false" placeholder="Selectionner le pays " formControlName="pays">
+          <ion-select-option *ngFor="let pays of this.getPays" [value]="pays.id">{{pays.nom}}</ion-select-option>
+          <!-- <ion-select-option value="angola">Angola</ion-select-option>
+        <ion-select-option value="tunisie">Tunisie</ion-select-option>
+        <ion-select-option value="senegal">Sénégal</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ville <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="text" placeholder="Ville" formControlName="ville"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categorie <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select value="categorie" multiple="false" placeholder="Selectionner la catégorie"
+          formControlName="categorie">
+          <ion-select-option *ngFor="let categorie of this.getCategorie" [value]="categorie.id">{{categorie.nom}}
+          </ion-select-option>
+          <!-- <ion-select-option value="homme">Causée par l'homme</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Type de catastrophe <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select value="type" multiple="false" placeholder="Selectionner le type" formControlName="souscategorie">
+          <ion-select-option *ngFor="let souscat of this.getSousCategorie" [value]="souscat.id">{{souscat.nom}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Sans Abris <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="number" formControlName="sansAbris"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Autres <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="number" placeholder="Chiens, ..." formControlName="autresVictimes"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Dimension <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="number" formControlName="dimension"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6" (onload)="getLocalStorageUserData();" style="display: none;">
+          <ion-item style="color: black;">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text" name="username" formControlName="username" value="{{username}}">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-button (click)="creerCatastrophe()" class="button" expand="block" shape="round" style="    --background: #218c74;
+    margin-top: 15px;
+    font-weight: 590;
+    font-size: 18px;
+" [disabled]="form.invalid">
+        {{isEditMode ? 'Mettre à jour' : 'Enregistrer'}}
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mes solutions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="messages" *ngFor="let message of postPerso">
+    <div class="message other-message">
+      <div class="img-nom">
+        <ion-card-subtitle style="text-align:center; text-decoration: underline; font-weight: bold;" color="light">{{message.nomCatastrophe}}</ion-card-subtitle><br>
+        <!-- De : <b>{{message.username}}</b><br><br> -->
+        <div style="font-style: italic;">{{message.message}}</div>
+      </div><br>
+
+      <div class="time" text-right>
+        <!-- <br> -->
+        {{message.date | date:'MM/dd/yyyy, h:mm a'}} &nbsp;&nbsp; <ion-icon (click)="deleteSolution(message.id)" name="trash" color="light"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>

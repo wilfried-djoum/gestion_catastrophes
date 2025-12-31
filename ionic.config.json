@@ -1,0 +1,8 @@
+{
+  "name": "gestion_catastrophes",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title style="color: white;">Catastrophes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="upperbox">
+    <div class="container-header">
+      <h3 slot="start">Ajouts Récents</h3>
+    </div>
+    <div class="lower-box">
+      <div class="wrapper">
+        <div class="item" *ngFor="let catastrophe of this.posts" (click)="openDetailModal(catastrophe)">
+          <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" alt="" src="">
+          <!-- <img src="../../../assets/images/cassures.jpg" alt=""> -->
+          <!-- <ion-icon name="heart" id="end" (click)="like()"></ion-icon> -->
+          <p class="name">
+            <span slot="start">{{catastrophe.nomCatastrophe}}</span>
+            <ion-buttons style="--background: transparent;
+    --color: #000; --border:none;">
+              <!-- <ion-icon slot="end" name="ellipsis-vertical" style="height: 16px;
+              color: #0000007d;"></ion-icon> -->
+            </ion-buttons>
+          </p>
+          <p class="pays">
+            <span slot="start">{{catastrophe.continent.nom}}</span>,
+            <span slot="start">{{catastrophe.pays.nom}}</span>
+          </p>
+          <p class="ville">
+            <span slot="start">{{catastrophe.ville}}</span>
+            <!-- <span slot="end" style="font-size: 12px; color:#218c74; display: flex; align-items: center;">
+              <ion-icon name="eye"></ion-icon>&nbsp;15 vues
+            </span> -->
+          </p>
+          <p class="publie">Publié le <span style="color: #218c74;">{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm
+            a'}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upperbox">
+    <div class="container-header">
+      <h3 slot="start">Naturelles</h3>
+      <p slot="end" style="display: flex; justify-content: space-between; align-items:center ;">
+        <!-- <ion-label color="danger" (click)="navigateCatastrophe()">Voir Plus &nbsp;</ion-label>
+        <ion-icon name="chevron-forward" color="danger"></ion-icon> -->
+      </p>
+    </div>
+    <div class="lower-box">
+      <div class="wrapper">
+        <div class="item" *ngFor="let catastrophe of this.postNaturelle" (click)="openDetailModal(catastrophe)">
+          <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" alt="" src="">
+          <!-- <img src="../../../assets/images/cassures.jpg" alt=""> -->
+          <!-- <ion-icon name="heart" id="end" (click)="like()"></ion-icon> -->
+          <p class="name">
+            <span slot="start">{{catastrophe.nomCatastrophe}}</span>
+            <ion-buttons style="--background: transparent;
+    --color: #000; --border:none;">
+              <!-- <ion-icon slot="end" name="ellipsis-vertical" style="height: 16px;
+              color: #0000007d;"></ion-icon> -->
+            </ion-buttons>
+          </p>
+          <p class="pays">
+            <span slot="start">{{catastrophe.continent.nom}}</span>,
+            <span slot="start">{{catastrophe.pays.nom}}</span>
+          </p>
+          <p class="ville">
+            <span slot="start">{{catastrophe.ville}}</span>
+            <!-- <span slot="end" style="font-size: 12px; color:#218c74; display: flex; align-items: center;">
+              <ion-icon name="eye"></ion-icon>&nbsp;15 vues
+            </span> -->
+          </p>
+          <p class="publie">Publié le <span style="color: #218c74;">{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm
+              a'}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upperbox">
+    <div class="container-header">
+      <h3 slot="start">Causées par l'homme</h3>
+      <p slot="end" style="display: flex; justify-content: space-between; align-items:center ;">
+        <!-- <ion-label color="danger" (click)="navigateAccident()">Voir Plus &nbsp;</ion-label>
+        <ion-icon name="chevron-forward" color="danger"></ion-icon> -->
+      </p>
+    </div>
+    <div class="lower-box">
+      <div class="wrapper">
+        <div class="item" *ngFor="let catastrophe of this.postHomme" (click)="openDetailModal(catastrophe)">
+          <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" alt="" src="">
+          <!-- <img src="../../../assets/images/cassures.jpg" alt=""> -->
+          <!-- <ion-icon name="heart" id="end" (click)="like()"></ion-icon> -->
+          <p class="name">
+            <span slot="start">{{catastrophe.nomCatastrophe}}</span>
+            <ion-buttons style="--background: transparent;
+    --color: #000; --border:none;">
+              <!-- <ion-icon slot="end" name="ellipsis-vertical" style="height: 16px;
+              color: #0000007d;"></ion-icon> -->
+            </ion-buttons>
+          </p>
+          <p class="pays">
+            <span slot="start">{{catastrophe.continent.nom}}</span>,
+            <span slot="start">{{catastrophe.pays.nom}}</span>
+          </p>
+          <p class="ville">
+            <span slot="start">{{catastrophe.ville}}</span>
+            <!-- <span slot="end" style="font-size: 12px; color:#218c74; display: flex; align-items: center;">
+              <ion-icon name="eye"></ion-icon>&nbsp;15 vues
+            </span> -->
+          </p>
+          <p class="publie">Publié le <span style="color: #218c74;">{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm
+              a'}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon md="share-social" ios="share-social"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="primary">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="secondary">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="success">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+</ion-content>

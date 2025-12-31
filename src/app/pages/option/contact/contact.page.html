@@ -1,0 +1,53 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+  <div class="upperbox1">
+    <div class="close" (click)="closeModal()">Annuler</div>
+    <div class="contacter">Contact </div>
+    <div class="send_btn">
+      <button>
+        Envoyer
+      </button>
+    </div>
+  </div>
+
+  <div class="upperbox2">
+    <ion-card-subtitle>Nous pouvons vous aidez à quel sujet?</ion-card-subtitle>
+    <ion-list>
+      <ion-item class="item">
+        <ion-label position="floating">Utilisateur </ion-label>
+        <ion-input type="text" placeholder="Utilisateur" value="{{payloadParse}}" disabled>
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="item">
+        <ion-label position="floating" style="color: rgba(99, 96, 96, 0.664);">Renseignez votre requête ici !
+        </ion-label>
+        <ion-textarea rows="12" required></ion-textarea>
+      </ion-item>
+
+      <ion-item style="cursor: pointer;">
+        <ion-label>Recevoir informations</ion-label>
+        <ion-toggle slot="end" name="infos" mode="ios" color="success" checked></ion-toggle>
+      </ion-item>
+
+      <ion-card-subtitle style="margin-top: 10px; margin-bottom: 10px; text-align: justify;">Techniquement les détails
+        comme votre model et paramètres peuvent nous aider a répondre à vos questions. <a
+          href="/src/app/pages/settings/settings.page.html">Apprendre plus!</a></ion-card-subtitle>
+
+      <ion-item>
+        <ion-label position="floating">Envoyer par mail</ion-label>
+        <ion-input type="email" placeholder="Envoyer par mail"></ion-input>
+      </ion-item>
+
+      <ion-button href="{{url}}" color="success">
+        <ion-icon  name="logo-whatsapp"></ion-icon>
+      </ion-button>
+      <!-- <hr style="border-bottom: 1px solid gray;"> -->
+    </ion-list>
+  </div>
+</ion-content>

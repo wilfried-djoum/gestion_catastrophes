@@ -1,0 +1,57 @@
+ion-header {
+  border: none;
+  outline: none;
+
+  .header {
+    border-bottom: none;
+    outline: none;
+    // --background: #227093;
+    --background: #218c74;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+ion-content {
+  --background: #fff;
+
+}
+
+.canvasPremier {
+  position: relative;
+  height: 45%;
+  width: 100%;
+}
+.canvasDernier {
+  position: relative;
+  height: 45%;
+  width: 100%;
+}
+
+ion-item-divider {
+  --background: none;
+}
+
+.title {
+  color: black;
+  font-weight: 600;
+  text-decoration: wavy;
+  text-decoration: underline;
+}
+
+.line {
+  border-bottom: 1px dashed rgb(202, 200, 200);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+
+.btn-download {
+  color: white;
+  background: #218c74;
+  width: 80%;
+  margin: auto;
+  border-radius: 50px;
+}

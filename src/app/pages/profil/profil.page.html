@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <!-- <ion-title slot="start">profil</ion-title> -->
+    <div class="head">
+      <ion-icon class="notifications" slot="end" name="notifications" (click)="showmodal()"></ion-icon>
+      <div class="badge" color="light" style="    position: absolute; background: #f5005a; width: 10px; height: 10px;
+      right: 50px;
+      top: 15px;
+      border-radius: 10px;"></div>
+      <!-- <span class="badge">0</span> -->
+      <ion-icon class="settings" slot="end" name="settings" (click)="settingsPage()"></ion-icon>
+    </div>
+
+    <div class="imageUser">
+      <!-- <img [src]="userdatas.imageUser" alt=""> -->
+      <img
+        src="https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+        alt="">
+    </div>
+    <h2>{{payloadParse}} &nbsp;
+      <ion-icon name="share-social" class="icon"></ion-icon>
+    </h2>
+    <div class="container">
+      <div class="followers">
+        <div class="number">12</div>
+        <div class="name">followers</div>
+      </div>
+      <div class="followings">
+        <div class="number">123</div>
+        <div class="name">followings</div>
+      </div>
+    </div>
+  </ion-toolbar>
+  <button class="crayon" (click)="update_info_page()">
+    <ion-icon name="flame" class="pencil"></ion-icon>
+  </button>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-item (click)="navigatePrivatePage()" style="cursor: pointer;">
+    <ion-label>
+      <ion-icon name="add-circle"></ion-icon>&nbsp; Ajouts Récents &nbsp; &nbsp; <span style="background: #f5005a;
+      color: white;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;">{{count}}</span>
+    </ion-label>
+    <ion-icon slot="end" color="red" name="chevron-forward-outline" style="float: right;"></ion-icon>
+    <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+  </ion-item>
+  <ion-item (click)="navigatePrivatePageSolution()"  style="cursor: pointer;">
+    <ion-label>
+      <ion-icon name="book"></ion-icon>&nbsp; Solutions Proposées &nbsp; &nbsp;<span style="background: #2500f5;
+      color: white;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;">{{countSolution}}</span>
+    </ion-label>
+    <ion-icon slot="end" color="red" name="chevron-forward-outline" style="float: right;"></ion-icon>
+    <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+  </ion-item>
+  <ion-item href="#">
+    <ion-label>
+      <ion-icon name="flag"></ion-icon>&nbsp; Liste noire &nbsp; <span style="color: #f5005a;"></span>
+    </ion-label>
+    <ion-icon slot="end" color="red" name="chevron-forward-outline" style="float: right;"></ion-icon>
+    <!-- <ion-icon name="arrow-forward"></ion-icon> -->
+  </ion-item>
+</ion-content>

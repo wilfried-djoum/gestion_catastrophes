@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button style="color: black;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <form action="" method="post">
+    <div class="imageUser">
+      <img [src]="image" name="imageUrl" alt="">
+    </div>
+    <div class="photo">
+      <button (click)="selectImage()">
+        <ion-icon name="image"></ion-icon> Changer votre photo
+      </button>
+    </div>
+    <ion-list class="ion-padding" style="background: white;">
+      <h2 style="color: black; font-weight: bold;">Informations</h2>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Nom d'utilisateur</ion-label>
+        <ion-input type="text" value="Killer Will" name="nom"></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Prénom</ion-label>
+        <ion-input type="text" value="Wilfried" name="prenom"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Adresse Email</ion-label>
+        <ion-input type="email" value="killer@gmail.com" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-weight: bold;" position="floating">Mot de Passe</ion-label>
+        <ion-input type="password" value="killer1234" name="password"></ion-input>
+      </ion-item>
+      <!-- <ion-item style="margin-bottom: 100px;">
+        <ion-label style="font-weight: bold;" position="floating">Numero Telephone</ion-label>
+        <ion-input type="number" value="694499123" name="numero"></ion-input>
+      </ion-item> -->
+    </ion-list>
+    <div class="ion-padding" id="btn">
+      <ion-button type="submit" class="actionbutton" fill="clear" (click)="modalRedirect()"
+        style="text-transform: none; width:250px; border-radius:15px; font-size:larger; font-weight: bold; background: #218c74; color:antiquewhite;">
+        Sauvegarder &nbsp; <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </div>
+  </form>
+
+</ion-content>

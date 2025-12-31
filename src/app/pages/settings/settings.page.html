@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button style="color: black;"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: black;">Parametres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="upperbox">
+    <ion-item (click)="openDetailModal()">
+      <ion-label>
+        <ion-icon name="bookmarks" style="color: #1590b3;"></ion-icon>
+        Manuel d'utilisation
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+    <ion-item href="#">
+      <ion-label>
+        <ion-icon name="expand" style="color: #339d4a;"></ion-icon>
+        Termes de Contrat
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+    <ion-item (click)="aboutPage()">
+      <ion-label>
+        <ion-icon name="alert-circle" style="color: #4343c3;"></ion-icon>
+        A propos
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </div>
+
+
+  <div class="upperbox">
+    <ion-item href="#">
+      <ion-label>
+        <ion-icon name="help-circle" style="color: #f5d700;"></ion-icon>
+        Aide ?
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+    <ion-item href="#">
+      <ion-label>
+        <ion-icon name="heart" style="color: #f5005a;"></ion-icon>
+        Inviter Amis
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label (click)="contactModal()">
+        <ion-icon name="call" style="color: #00f550;" ></ion-icon>
+        Contactez-nous
+      </ion-label>
+      <ion-icon slot="end" color="red" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </div>
+
+
+  <div class="upperbox">
+    <ion-item (click)="logOut()">
+      <ion-label>
+        <ion-icon slot="start" style="color: #f71a1a;" name="exit"></ion-icon>
+        Déconnexion
+      </ion-label>
+    </ion-item>
+  </div>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Application conçue par Popler & Co</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

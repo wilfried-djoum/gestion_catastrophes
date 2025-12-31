@@ -1,0 +1,185 @@
+<ion-content>
+  <div class="sticked">
+    <ion-searchbar placeholder="Rechercher....." inputmode="decimal" type="decimal" [(ngModel)]="searchTerms"
+      (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="focus" animated></ion-searchbar>
+
+    <ion-segment [value]="segId" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="catastrophes">
+        <ion-label>Catastrophes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="carte">
+        <ion-label>Carte</ion-label>
+      </ion-segment-button>
+      <!-- <ion-segment-button value="utilisateurs">
+    <ion-label>Utilisateurs</ion-label>
+  </ion-segment-button> -->
+    </ion-segment>
+  </div>
+
+
+  <div class="content">
+    <!-- catastrophes repertoriées -->
+    <div class="catastrophes" *ngIf="segId == 'catastrophes'">
+      <ion-card (click)="openDetailModal(catastrophe)" *ngFor="let catastrophe of this.posts | filter:searchTerms">
+        <ion-card-header>
+          <img [src]="'http://127.0.0.1:8000/images/blog/'+catastrophe.imageUrl" style="object-fit: cover;" alt="" src="">
+          <ion-card-title>{{catastrophe.nomCatastrophe}}</ion-card-title>
+          <ion-card-subtitle>{{catastrophe.ville}}, {{catastrophe.pays.nom}}, {{catastrophe.continent.nom}}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <h4>Par: <span>{{catastrophe.username}}</span></h4>
+          <h4>Publié le: <span>{{catastrophe.createdAt | date:'MM/dd/yyyy, h:mm a'}}</span></h4>
+          <p>
+            {{catastrophe.description}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Carte des emplacements  -->
+    <div class="carte maps" *ngIf="segId == 'carte'">
+
+      <div style="    width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;">
+        <div class="conteneur">
+          <img src="../../../assets/images/2027503-218c74.png" style="width: 80%;
+          margin-left: 11%;
+          height: 100%;
+          margin-right: 10%;
+          margin-top: 20px;
+          margin-bottom: 30px;" alt="">
+          <ion-button style="    background: #218c74;
+      --color: whithe;
+      border-radius: 50px;
+      height: 50px;
+      width: 90%;
+      font-size: 15px;
+      margin: auto;" (click)="modalMap()" expand="block" fill="clear" shape="round" color="light">
+            Consultez la carte&nbsp; <ion-icon name="arrow-forward"></ion-icon>
+          </ion-button>
+        </div>
+        <!-- <iframe src="https://www.google.com/maps?q=3.8600704,11.5146752&h1=es;z=7&output=embed" width="100%"
+          height="70%" style="border:0;" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe> -->
+      </div>
+    </div>
+
+
+    <!-- Liste des utilisateurs de l'aaplication -->
+    <!-- <div class="utilisateurs" *ngIf="segId == 'utilisateurs'">
+      <ion-item style="margin-bottom: 5px;">
+        <ion-thumbnail class="ion-margin-end">
+          <img src="../../../assets/images/bran2.png" style="border-radius: 50%;" />
+        </ion-thumbnail>
+        <ion-label href="#" class="ion-text-wrap" style="font-weight: 650;"><a href="#" style="    text-decoration: none;
+          color: black;">Jean Charles Okono</a> </ion-label>
+        <ion-buttons slot="end">
+          <button style="border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          font-weight: bold;
+          color: white;
+          background: #20806a;">
+            <ion-icon slot="end" name="add" style="color: #fff;
+            margin-right: 10px;
+            margin-left: -2px;"></ion-icon> Suivre
+          </button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item style="margin-bottom: 5px;">
+        <ion-thumbnail class="ion-margin-end">
+          <img src="../../../assets/images/bran2.png" style="border-radius: 50%;" />
+        </ion-thumbnail>
+        <ion-label href="#" class="ion-text-wrap" style="font-weight: 650;"><a href="#" style="    text-decoration: none;
+          color: black;">Jean Charles Okono</a> </ion-label>
+        <ion-buttons slot="end">
+          <button style="border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          font-weight: bold;
+          color: white;
+          background: #20806a;">
+            <ion-icon slot="end" name="add" style="color: #fff;
+            margin-right: 10px;
+            margin-left: -2px;"></ion-icon> Suivre
+          </button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item style="margin-bottom: 5px;">
+        <ion-thumbnail class="ion-margin-end">
+          <img src="../../../assets/images/bran2.png" style="border-radius: 50%;" />
+        </ion-thumbnail>
+        <ion-label href="#" class="ion-text-wrap" style="font-weight: 650;"><a href="#" style="    text-decoration: none;
+          color: black;">Jean Charles Okono</a> </ion-label>
+        <ion-buttons slot="end">
+          <button style="border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          font-weight: bold;
+          color: white;
+          background: #20806a;">
+            <ion-icon slot="end" name="add" style="color: #fff;
+            margin-right: 10px;
+            margin-left: -2px;"></ion-icon> Suivre
+          </button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item style="margin-bottom: 5px;">
+        <ion-thumbnail class="ion-margin-end">
+          <img src="../../../assets/images/bran2.png" style="border-radius: 50%;" />
+        </ion-thumbnail>
+        <ion-label href="#" class="ion-text-wrap" style="font-weight: 650;"><a href="#" style="    text-decoration: none;
+          color: black;">Jean Charles Okono</a> </ion-label>
+        <ion-buttons slot="end">
+          <button style="border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          font-weight: bold;
+          color: white;
+          background: #20806a;">
+            <ion-icon slot="end" name="add" style="color: #fff;
+            margin-right: 10px;
+            margin-left: -2px;"></ion-icon> Suivre
+          </button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item style="margin-bottom: 5px;">
+        <ion-thumbnail class="ion-margin-end">
+          <img src="../../../assets/images/bran2.png" style="border-radius: 50%;" />
+        </ion-thumbnail>
+        <ion-label href="#" class="ion-text-wrap" style="font-weight: 650;"><a href="#" style="    text-decoration: none;
+          color: black;">Jean Charles Okono</a> </ion-label>
+        <ion-buttons slot="end">
+          <button style="border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          font-weight: bold;
+          color: white;
+          background: #20806a;">
+            <ion-icon slot="end" name="add" style="color: #fff;
+            margin-right: 10px;
+            margin-left: -2px;"></ion-icon> Suivre
+          </button>
+        </ion-buttons>
+      </ion-item>
+
+    </div> -->
+  </div>
+</ion-content>

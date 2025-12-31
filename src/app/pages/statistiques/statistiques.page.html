@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title color="light">Statistiques</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title class="title ion-padding">Statistique de blessés</ion-title>
+  <canvas #canvas class="canvasPremier" style="display: block;
+  box-sizing: border-box;
+  height: 40vh;
+  width: 100%; margin-top: 15px;"></canvas>
+  <ion-button (click)="downloadBlesses()" expand="block" fill="clear" shape="round" class="btn-download">
+    <ion-icon name="code-download"></ion-icon>&nbsp; Télécharger
+  </ion-button>
+  <!-- <ion-item-divider>
+  </ion-item-divider> -->
+  <ion-row>
+    <ion-col size="12" class="line"></ion-col>
+  </ion-row>
+
+  <ion-title class="title ion-padding">Statistique de morts</ion-title>
+
+  <canvas #canvasBar class="canvasPremier" style="display: block;
+  box-sizing: border-box;
+  height: 40vh;
+  width: 100%; margin-top: 15px; margin-bottom: 15px;"></canvas>
+  <ion-button (click)="downloadMorts()" expand="block" fill="clear" shape="round" class="btn-download" style="margin-bottom: 15px;">
+    <ion-icon name="code-download"></ion-icon>&nbsp; Télécharger
+  </ion-button>
+
+
+  <ion-row>
+    <ion-col size="12" class="line"></ion-col>
+  </ion-row>
+
+  <ion-title class="title ion-padding">Villes touchées</ion-title>
+
+  <canvas #canvasLines class="canvasDernier" style="display: block;
+  box-sizing: border-box;
+  height: 40vh;
+  width: 100%; margin-top: 15px; margin-bottom: 15px;"></canvas>
+  <ion-button (click)="downloadVilles()" expand="block" fill="clear" shape="round" class="btn-download" style="margin-bottom: 15px;">
+    <ion-icon name="code-download"></ion-icon>&nbsp; Télécharger
+  </ion-button>
+
+</ion-content>
