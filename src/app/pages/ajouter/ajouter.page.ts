@@ -231,7 +231,9 @@ export class AjouterPage implements OnInit {
 
 
   async creerCatastrophe() {
-    console.log(this.catastrophe);
+    if (this.isEditMode) {
+      console.log('Mode édition - Catastrophe:', this.catastrophe);
+    }
 
     const loading = await this.loadingCtrl.create({
       spinner: 'lines', message: 'Enregistrement ....', mode: 'ios',
